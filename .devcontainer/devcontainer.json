@@ -1,0 +1,54 @@
+{
+  "image": "python:3.11",
+  "remoteEnv": {
+    "APP_HOST": "0.0.0.0",
+    "APP_PORT": 8000
+  },
+  "onCreateCommand": "pip install -r requirements.txt && pip install pylint black isort",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens",
+        "huizhou.githd",
+        "codezombiech.gitignore",
+        "ms-python.python",
+        "mikoz.black-py",
+        "ms-python.black-formatter",
+        "ms-python.vscode-pylance",
+        "ms-python.pylint",
+        "DavidAnson.vscode-markdownlint",
+        "shd101wyy.markdown-preview-enhanced",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg",
+        "ms-python.isort"
+      ],
+
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": true,
+        "editor.tabCompletion": "on",
+        "files.trimTrailingWhitespace": true,
+
+        "cSpell.language": "en-GB",
+
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter",
+
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          }
+        },
+
+        "isort.args": ["--profile", "black"],
+        "python.languageServer": "Pylance",
+
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": ["${workspaceRoot}"],
+        "python.testing.unittestEnabled": false
+      }
+    }
+  }
+}

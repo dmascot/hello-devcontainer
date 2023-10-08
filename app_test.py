@@ -10,3 +10,7 @@ def test_main():
         response = test_client.get("/")
         assert response.status_code == 200
         assert b"Hello there" in response.data
+
+
+def test_db_connection():
+    assert app.db_connection()

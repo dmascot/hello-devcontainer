@@ -1,9 +1,11 @@
 {
-  "image": "python:3.11",
-  "remoteEnv": {
-    "APP_HOST": "0.0.0.0",
-    "APP_PORT": 8000
-  },
+  "dockerComposeFile": "compose.yaml",
+  "service": "app_container",
+  "shutdownAction": "stopCompose",
+  "workspaceFolder": "/vscode/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/vscode/workspace,type=bind"
+  ],
   "onCreateCommand": "pip install -r requirements.txt && pip install pylint black isort",
   "customizations": {
     "vscode": {
@@ -47,7 +49,18 @@
 
         "python.testing.pytestEnabled": true,
         "python.testing.pytestArgs": ["${workspaceRoot}"],
-        "python.testing.unittestEnabled": false
+        "python.testing.unittestEnabled": false,
+
+        "sqltools.connections": [
+          {
+            "database": "hellodevcontainer",
+            "server": "db_container",
+            "username": "root",
+            "password": "",
+            "port": 5432,
+            "driver": "PostgreSQL"
+          }
+        ]
       }
     }
   }
